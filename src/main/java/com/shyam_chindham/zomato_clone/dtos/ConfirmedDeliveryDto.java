@@ -1,0 +1,32 @@
+package com.shyam_chindham.zomato_clone.dtos;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.shyam_chindham.zomato_clone.entities.DeliveryRequest;
+import com.shyam_chindham.zomato_clone.entities.enums.ConfirmedDeliveryStatus;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import java.time.LocalDateTime;
+
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+public class ConfirmedDeliveryDto {
+    private Long id;
+    @JsonIgnore
+    private DeliveryRequest deliveryRequest;
+    private DeliveryPartnerDto deliveryPartner;
+    private String pickUpOtp;
+    private Double distance;
+    private Double grandTotal;
+    private Integer estimatedTime;
+    private PointDto pickUpAddress;
+    private PointDto dropOffAddress;
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    private LocalDateTime deliveryAcceptedTime;
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    private LocalDateTime deliveryCompleteTime;
+    private ConfirmedDeliveryStatus confirmedDeliveryStatus;
+}
